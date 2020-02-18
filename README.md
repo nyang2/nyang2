@@ -21,8 +21,9 @@ JS로 만드는 Bitmap 이미지 에디터 프로젝트
 # 구조 
 ```
 config/
-       webpack.development.js  -> 개발용 웹팩 설정 
-       webpack.js -> 빌드용 웹팩 설정 
+      webpack.common.js -> 웹팩 공용 설정 
+      webpack.development.js  -> 개발용 웹팩 설정 
+      webpack.js -> 빌드용 웹팩 설정 
 src/
     color/ -> 컬러 함수 모음 
           rgb2hsv.js  
