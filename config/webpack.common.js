@@ -2,10 +2,18 @@ var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './index.js',
+  entry: './index.ts',
   output: {
     filename: 'nyang2.js',
     path: path.resolve(__dirname, '../dist'),
+  },
+  resolve: {
+      extensions: ['.ts', '.js']
+  },
+  module: {
+    rules: [
+      { test: /\.ts?$/, loader: "ts-loader" }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
