@@ -4,7 +4,7 @@
   "description": "JS로 만드는 Bitmap 이미지 에디터 프로젝트",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=development webpack-dev-server --config=config/webpack.development.js --open",
+    "dev": "NODE_ENV=development webpack-dev-server --config=config/webpack.dev.js --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
