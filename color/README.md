@@ -32,6 +32,12 @@ https://www.easyrgb.com/en/math.php
 
 RGB -> HSV 부터 하나씩 시작하시죠. 
 
+제작 해볼 컬러 변환 함수 , 추가 할 때 마다 여기에 적어볼까요? 
+
+* rgb2hsv 
+* hsv2rgb 
+* ...
+
 
 
 
