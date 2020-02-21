@@ -1,6 +1,10 @@
-export function rgb2hsv(r, g, b) {
-  if (arguments.length === 1) {
-    var { r, g, b } = arguments[0];
+import { RGBArrayType, RGBColorType, HSVColorType } from './';
+
+export function rgb2hsv(...arg: RGBArrayType | [RGBColorType]): HSVColorType {
+  if (arg.length === 1) {
+    var { r, g, b } = arg[0];
+  } else {
+    var [r, g, b] = arg;
   }
 
   const rAbs = r / 255;
@@ -15,7 +19,7 @@ export function rgb2hsv(r, g, b) {
     return {
       h: 0,
       s: 0,
-      v: 0
+      v: 0,
     };
   }
 
@@ -38,6 +42,6 @@ export function rgb2hsv(r, g, b) {
   return {
     h,
     s,
-    v
+    v,
   };
 }
