@@ -4,9 +4,8 @@ import { RGB, XYZ } from "./color";
 export function gamma_reverse (u: number): number {
     if ( u > 0.04045 ) {
         return Math.pow(( u + 0.055 ) / 1.055 ,  2.4);
-    } else {
-        return u / 12.92;
     }   
+    return u / 12.92;
 }
 
 export function rgb2xyz (rgb: RGB): XYZ {

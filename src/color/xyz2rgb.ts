@@ -4,9 +4,9 @@ import { RGB, XYZ } from "./color";
 export function gamma (u: number): number {
     if ( u > 0.0031308 ) {
         return 1.055 * ( Math.pow(u , ( 1 / 2.4 )) ) - 0.055;
-    } else {
-        return 12.92 * u;
-    }   
+    }
+    
+    return 12.92 * u;    
 }
 
 export function xyz2rgb (xyz: XYZ): RGB {
