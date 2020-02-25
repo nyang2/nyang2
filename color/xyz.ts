@@ -1,5 +1,5 @@
 export interface Color extends Object{
-
+    [key:string]: any
 }
 
 export interface XYZ extends Color {
