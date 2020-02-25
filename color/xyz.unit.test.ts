@@ -10,7 +10,7 @@ test("XYZ color from numbers ", () => {
 });
 
 test("XYZ color from number array ", () => {
-    let color = XYZ([0,0,0]);
+    let color = XYZ([1/3,1/3,1/3]);
     expect(color.X).toBe(1/3);
     expect(color.Y).toBe(1/3);
     expect(color.Z).toBe(1/3);
@@ -19,9 +19,9 @@ test("XYZ color from number array ", () => {
 
 test("XYZ color from Yxy color", () => {
     let color = XYZ({Y:0.3, x:0.3, y:0.3, otherAttr:'hello world!'});
-    expect(color.X).toBe(.5);
-    expect(color.Y).toBe(.5);
-    expect(color.Z).toBe(4);
+    expect(color.X).toBe(.3);
+    expect(color.Y).toBe(.3);
+    expect(color.Z).toBe(0.39999999999999997);
     expect(instanceOfXYZ(color)).toBe(true);
 });
 
@@ -38,23 +38,23 @@ test("Yxy color from numbers ", () => {
     expect(color.Y).toBe(1/3);
     expect(color.x).toBe(1/3);
     expect(color.y).toBe(1/3);
-    expect(instanceOfXYZ(color)).toBe(true);
+    expect(instanceOfYxy(color)).toBe(true);
 });
 
 test("Yxy color from number array ", () => {
     let color = Yxy([1/3,1/3,1/3]);
-    expect(color.X).toBe(0);
-    expect(color.Y).toBe(0);
-    expect(color.Z).toBe(0);
-    expect(instanceOfXYZ(color)).toBe(true);
+    expect(color.Y).toBe(1/3);
+    expect(color.x).toBe(1/3);
+    expect(color.y).toBe(1/3);
+    expect(instanceOfYxy(color)).toBe(true);
 });
 
 test("Yxy color from XYZ color", () => {
-    let color = XYZ({Y:0.5, x:.1, y:.1, otherAttr:'hello world!'});
-    expect(color.X).toBe(.5);
+    let color = Yxy({Y:0.5, x:.1, y:.1, otherAttr:'hello world!'});
     expect(color.Y).toBe(.5);
-    expect(color.Z).toBe(4);
-    expect(instanceOfXYZ(color)).toBe(true);
+    expect(color.x).toBe(.1);
+    expect(color.y).toBe(.1);
+    expect(instanceOfYxy(color)).toBe(true);
 });
 
 test("Yxy color from Yxy color", () => {

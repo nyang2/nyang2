@@ -1,5 +1,5 @@
-export interface Color extends Object{
-    [key:string]: any
+export interface Color extends Object {
+    [key: string]: any
 }
 
 export interface XYZ extends Color {
@@ -34,49 +34,54 @@ export function instanceOfYxy(v: any): v is Yxy {
 
 interface XYZFactory extends Function {
     (color: XYZ): XYZ;
+
     (x: number, y: number, z: number): XYZ;
+
     (v: Array<number>): XYZ;
+
     (v: Yxy): XYZ;
 
     fromYxy: (src: Yxy) => XYZ
-    fromArray: (arr: number[]) => XYZ
-    fromNumber: (x:number, y:number, z:number) => XYZ
+    fromArray: (arr: number[], startIndex?: number) => XYZ
+    fromNumber: (x: number, y: number, z: number) => XYZ
 }
 
 interface YxyFactory extends Function {
     (color: Yxy): Yxy;
+
     (Y: number, x: number, y: number): Yxy;
+
     (v: Array<number>): Yxy;
 
     fromXYZ: (src: XYZ) => Yxy
-    fromArray: (arr: number[]) => Yxy
-    fromNumber: (Y:number, x:number, y:number) => Yxy
+    fromArray: (arr: number[], startIndex?: number) => Yxy
+    fromNumber: (Y: number, x: number, y: number) => Yxy
 }
 
 export const XYZ: XYZFactory = function (x: XYZ | Yxy | number | Array<number> = 0, y: number = 0, z: number = 0) {
     if (x instanceof Array) {
         return XYZ.fromArray(x);
     } else if (typeof x === 'number') {
-        return XYZ.fromNumber(x,y,z)
+        return XYZ.fromNumber(x, y, z)
     } else if (instanceOfXYZ(x)) {
         return x;
-    } else if (instanceOfYxy(x)){
+    } else if (instanceOfYxy(x)) {
         return XYZ.fromYxy(x);
-    }else {
+    } else {
         throw new Error("invalid input parameter.")
     }
 };
 
-XYZ.fromYxy = function(src: Yxy): XYZ {
-    let {Y,x,y} = src;
+XYZ.fromYxy = function (src: Yxy): XYZ {
+    let {Y, x, y} = src;
     return {
-        X: x * ( Y / y ),
+        X: x * (Y / y),
         Y: Y,
-        Z: ( 1 - x - y ) * ( Y / y )
+        Z: (1 - x - y) * (Y / y)
     }
 };
 
-XYZ.fromNumber = function(x: number, y: number ,z: number){
+XYZ.fromNumber = function (x: number, y: number, z: number) {
     return {
         X: x,
         Y: y,
@@ -84,37 +89,37 @@ XYZ.fromNumber = function(x: number, y: number ,z: number){
     }
 }
 
-XYZ.fromArray = function(arr: number[], startIndex: number = 0) {
+XYZ.fromArray = function (arr: number[], startIndex: number = 0) {
     return {
-        X: arr[0],
-        Y: arr[1],
-        Z: arr[2]
+        X: arr[startIndex + 0],
+        Y: arr[startIndex + 1],
+        Z: arr[startIndex + 2]
     }
 };
 
-export const Yxy: YxyFactory = function(Y: XYZ | Yxy | number | Array<number> =0,x:number=0,y:number=0) {
+export const Yxy: YxyFactory = function (Y: XYZ | Yxy | number | Array<number> = 0, x: number = 0, y: number = 0) {
     if (Y instanceof Array) {
         return Yxy.fromArray(Y);
     } else if (typeof Y === 'number') {
-        return Yxy.fromNumber(Y,x,y)
+        return Yxy.fromNumber(Y, x, y)
     } else if (instanceOfYxy(Y)) {
         return Y;
-    } else if (instanceOfXYZ(Y)){
+    } else if (instanceOfXYZ(Y)) {
         return Yxy.fromXYZ(Y);
     } else {
         throw new Error("invalid input parameter.")
     }
 };
 
-Yxy.fromArray = function(arr: number[], startIndex: number = 0) {
+Yxy.fromArray = function (arr: number[], startIndex: number = 0) {
     return {
-        Y: arr[0],
-        x: arr[1],
-        y: arr[2]
+        Y: arr[startIndex + 0],
+        x: arr[startIndex + 1],
+        y: arr[startIndex + 2]
     }
 };
 
-Yxy.fromNumber = function(Y,x,y):Yxy {
+Yxy.fromNumber = function (Y, x, y): Yxy {
     return {
         Y: Y,
         x: x,
@@ -122,12 +127,12 @@ Yxy.fromNumber = function(Y,x,y):Yxy {
     }
 };
 
-Yxy.fromXYZ = function(src: XYZ):Yxy {
-        let {X,Y,Z} = src;
+Yxy.fromXYZ = function (src: XYZ): Yxy {
+    let {X, Y, Z} = src;
     return {
         Y: Y,
-        x: X / ( X + Y + Z ),
-        y: Y / ( X + Y + Z )
+        x: X / (X + Y + Z),
+        y: Y / (X + Y + Z)
     }
 };
 
