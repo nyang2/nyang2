@@ -21,8 +21,8 @@ export function xyz2rgb (xyz: XYZ): RGB {
     const tempB = gamma(tempX *  0.0557 + tempY * -0.2040 + tempZ *  1.0570);
 
     return {
-        r: tempR * 255,
-        g: tempG * 255,
-        b: tempB * 255,
+        r: Math.round(tempR * 255),
+        g: Math.round(tempG * 255),
+        b: Math.round(tempB * 255),
     };
 }

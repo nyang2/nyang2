@@ -1,4 +1,5 @@
 import { RGB, XYZ } from "./color";
+import * as assert from 'assert';
 
 // refer to https://en.wikipedia.org/wiki/RGB
 export function gamma_reverse (u: number): number {
@@ -10,6 +11,10 @@ export function gamma_reverse (u: number): number {
 
 export function rgb2xyz (rgb: RGB): XYZ {
     const {r, g, b} = rgb;
+
+    assert.ok(0 <= r && r <= 255, 'r is must in between 0 and 255');
+    assert.ok(0 <= g && g <= 255, 'g is must in between 0 and 255');
+    assert.ok(0 <= b && b <= 255, 'b is must in between 0 and 255');
 
     const tempR = gamma_reverse( r / 255 ) * 100;
     const tempG = gamma_reverse( g / 255 ) * 100;
