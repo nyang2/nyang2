@@ -12,8 +12,8 @@ export function cmy2rgb(...arg: ColorListType | [CMYColorType]) : RGBColorType {
     c = arg[0];
   }
   return {
-    r: (1 - c) * 255,
-    g: (1 - m) * 255,
-    b: (1 - y) * 255
+    r: Math.round((1 - c) * 255),
+    g: Math.round((1 - m) * 255),
+    b: Math.round((1 - y) * 255)
   };
 };
