@@ -5,7 +5,7 @@ export function cmyk2cmy(...arg: CMYKColorListType | [CMYKColorType]) : CMYColor
 	let m:number = arg[1] || 0;
 	let y:number = arg[2] || 0;
 	let k:number = arg[3] || 0;
-	if (typeof arg[0] === 'object') {
+  if (arg.length === 1) {
 		c = arg[0].c;
 		m = arg[0].m;
 		y = arg[0].y;

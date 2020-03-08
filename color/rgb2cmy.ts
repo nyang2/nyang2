@@ -4,7 +4,7 @@ export function rgb2cmy(...arg: ColorListType | [RGBColorType]) : CMYColorType {
   let r:number = 0;
   let g:number = arg[1] || 0;
   let b:number = arg[2] || 0;
-  if (typeof arg[0] === 'object') {
+  if (arg.length === 1) {
     r = arg[0].r;
     g = arg[0].g;
     b = arg[0].b;
