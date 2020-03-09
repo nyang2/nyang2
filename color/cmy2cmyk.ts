@@ -18,9 +18,9 @@ export function cmy2cmyk(...arg: ColorListType | [CMYColorType]) : CMYKColorType
     m = 0;
     y = 0;
   } else {
-    c = (c - k) / (1 - k);
-    m = (m - k) / (1 - k);
-    y = (y - k) / (1 - k);
+    c = (Math.max(0, Math.max(c)) - k) / (1 - k);
+    m = (Math.max(0, Math.max(m)) - k) / (1 - k);
+    y = (Math.max(0, Math.max(y)) - k) / (1 - k);
   }
   return {
     c,

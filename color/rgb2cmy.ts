@@ -12,8 +12,8 @@ export function rgb2cmy(...arg: ColorListType | [RGBColorType]) : CMYColorType {
     r = arg[0];
   }
   return {
-    c: 1 - (r / 255),
-    m: 1 - (g / 255),
-    y: 1 - (b / 255)
+    c: 1 - (Math.max(0, Math.min(255, Math.round(r))) / 255),
+    m: 1 - (Math.max(0, Math.min(255, Math.round(g))) / 255),
+    y: 1 - (Math.max(0, Math.min(255, Math.round(b))) / 255)
   };
 };
