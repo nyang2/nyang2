@@ -1,4 +1,3 @@
-import { rgb2xyz } from "../../src/color/rgb2xyz";
 import { xyz2rgb } from "../../src/color/xyz2rgb";
 
 test("test rgb2xyz - convert xyz to rgb", () => {

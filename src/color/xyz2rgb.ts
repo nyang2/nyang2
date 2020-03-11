@@ -1,4 +1,5 @@
 import { RGB, XYZ } from "./color";
+import { minmax } from "../util/math";
 
 // refer to https://en.wikipedia.org/wiki/RGB
 export function gamma (u: number): number {
@@ -21,8 +22,8 @@ export function xyz2rgb (xyz: XYZ): RGB {
     const tempB = gamma(tempX *  0.0557 + tempY * -0.2040 + tempZ *  1.0570);
 
     return {
-        r: Math.round(tempR * 255),
-        g: Math.round(tempG * 255),
-        b: Math.round(tempB * 255),
+        r: minmax(0, 255, Math.round(tempR * 255)),
+        g: minmax(0, 255, Math.round(tempG * 255)),
+        b: minmax(0, 255, Math.round(tempB * 255)),
     };
 }
