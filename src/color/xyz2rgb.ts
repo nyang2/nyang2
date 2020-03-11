@@ -1,12 +1,13 @@
 import { RGB, XYZ } from "./color";
+import { minmax } from "../util/math";
 
 // refer to https://en.wikipedia.org/wiki/RGB
 export function gamma (u: number): number {
     if ( u > 0.0031308 ) {
         return 1.055 * ( Math.pow(u , ( 1 / 2.4 )) ) - 0.055;
-    } else {
-        return 12.92 * u;
-    }   
+    }
+    
+    return 12.92 * u;    
 }
 
 export function xyz2rgb (xyz: XYZ): RGB {
@@ -21,8 +22,8 @@ export function xyz2rgb (xyz: XYZ): RGB {
     const tempB = gamma(tempX *  0.0557 + tempY * -0.2040 + tempZ *  1.0570);
 
     return {
-        r: tempR * 255,
-        g: tempG * 255,
-        b: tempB * 255,
+        r: minmax(0, 255, Math.round(tempR * 255)),
+        g: minmax(0, 255, Math.round(tempG * 255)),
+        b: minmax(0, 255, Math.round(tempB * 255)),
     };
 }
