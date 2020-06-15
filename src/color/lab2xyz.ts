@@ -1,5 +1,4 @@
-import { RGB, XYZ, LAB } from "./color";
-import { minmax } from "../util/math";
+import { LAB, XYZ } from "../../types";
 
 function reverseXyz (colorValue: number) {
     if ( Math.pow(colorValue, 3)  > 0.008856 ) { 

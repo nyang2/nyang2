@@ -1,6 +1,6 @@
-import { ColorListType, RGBColorType, HSVColorType } from './';
+import { ColorListType, RGB, HSV } from "../../types";
 
-export function rgb2hsv(...arg: ColorListType | [RGBColorType]): HSVColorType {
+export function rgb2hsv(...arg: ColorListType | [RGB]): HSV {
   if (arg.length === 1) {
     var { r, g, b } = arg[0];
   } else {

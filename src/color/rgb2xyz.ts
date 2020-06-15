@@ -1,5 +1,5 @@
-import { RGB, XYZ } from "./color";
 import { minmax } from "../util/math";
+import { RGB, XYZ } from "../../types";
 
 // refer to https://en.wikipedia.org/wiki/RGB
 export function gamma_reverse (u: number): number {

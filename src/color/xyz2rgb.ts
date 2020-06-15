@@ -1,5 +1,5 @@
-import { RGB, XYZ } from "./color";
 import { minmax } from "../util/math";
+import { XYZ, RGB } from "../../types";
 
 // refer to https://en.wikipedia.org/wiki/RGB
 export function gamma (u: number): number {

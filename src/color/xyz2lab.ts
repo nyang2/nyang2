@@ -1,4 +1,4 @@
-import { LAB, XYZ } from "./color";
+import { LAB, XYZ } from "../../types";
 
 export function pivot (colorValue: number): number {
     if ( colorValue > 0.008856 ) {

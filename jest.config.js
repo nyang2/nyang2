@@ -7,7 +7,6 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/$1'
   },
   testMatch: [
-      '<rootDir>/**/*.test.(js|jsx|ts|tsx)', 
       '<rootDir>/test/**/*.(js|jsx|ts|tsx)'
   ],
   transformIgnorePatterns: ['<rootDir>/node_modules/'],    

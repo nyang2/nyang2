@@ -2,9 +2,11 @@
   "name": "nyang2",
   "version": "0.0.1",
   "description": "JS로 만드는 Bitmap 이미지 에디터 프로젝트",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "dev": "NODE_ENV=development webpack-dev-server --config=config/webpack.dev.js --open",
+    "build": "tsc",
     "test": "jest",
     "test:watch": "jest --watch"
   },
@@ -12,7 +14,13 @@
     "type": "git",
     "url": "git+https://github.com/nyang2/nyang2.git"
   },
-  "keywords": [],
+  "keywords": [
+    "nyang2",
+    "js",
+    "bitmap",
+    "image",
+    "editor"
+  ],
   "author": "",
   "license": "MIT",
   "bugs": {
@@ -20,7 +28,7 @@
   },
   "homepage": "https://github.com/nyang2/nyang2#readme",
   "devDependencies": {
-    "@types/jest": "^25.1.3",
+    "@types/jest": "^25.2.3",
     "@types/node": "^13.7.7",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^25.1.0",
