@@ -29,3 +29,13 @@ test("test parse - LAB color", () => {
 
     expect(lab.data).toEqual({ type: 'lab', l: 255, a: 255, b: 255, alpha: 0 });
 });  
+
+test("test parse - non-expect color string", () => {
+
+    try {
+        const lab = parse('abc(255, 255, 255, 0)');
+    } catch (e) {
+        expect(e.message).toEqual('ColorFunction.abc is not a function');
+    }
+});  
+
