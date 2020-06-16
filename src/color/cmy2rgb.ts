@@ -1,6 +1,6 @@
-import { ColorListType, CMYColorType, RGBColorType } from './';
+import { ColorListType, CMY, RGB } from "../../types";
 
-export function cmy2rgb(...arg: ColorListType | [CMYColorType]) : RGBColorType {
+export function cmy2rgb(...arg: ColorListType | [CMY]) : RGB {
   let c:number = 0;
   let m:number = arg[1] || 0;
   let y:number = arg[2] || 0;

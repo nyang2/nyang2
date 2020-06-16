@@ -1,5 +1,6 @@
-import { RGB, XYZ } from "./color";
+
 import { minmax } from "../util/math";
+import { XYZ, RGB } from "../../types";
 
 export function xyz2adobe (xyz: XYZ): RGB {
     const {x, y, z} = xyz;

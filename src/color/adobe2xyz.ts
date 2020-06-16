@@ -1,5 +1,5 @@
-import { RGB, XYZ } from "./color";
 import { minmax } from "../util/math";
+import { RGB, XYZ } from "../../types";
 
 function convertColor (colorValue: number) {
     return Math.pow(( minmax(0, 255, colorValue) / 255 ), 2.19921875) * 100;
