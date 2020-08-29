@@ -1,47 +1,45 @@
-import { ColorListType, RGB, HSV } from "../../types";
+import { RGB, HSV } from "../../types";
 
-export function rgb2hsv(...arg: ColorListType | [RGB]): HSV {
-  if (arg.length === 1) {
-    var { r, g, b } = arg[0];
-  } else {
-    var [r, g, b] = arg;
-  }
+export function rgb2hsv(rgb: RGB): HSV {
 
-  const rAbs = r / 255;
-  const gAbs = g / 255;
-  const bAbs = b / 255;
+  const { r, g, b } = rgb;
 
-  const max = Math.max(rAbs, gAbs, bAbs);
-  const min = Math.min(rAbs, gAbs, bAbs);
+  const R = r / 255;
+  const G = g / 255;
+  const B = b / 255;
+
+  const max = Math.max(R, G, B);
+  const min = Math.min(R, G, B);
   const delta = max - min;
 
-  if (delta === 0) {
+  const V = max
+
+  if (delta === 0) {      // gray 
     return {
       h: 0,
       s: 0,
-      v: 0,
+      v: V,
     };
   }
 
-  let h = 0;
-  const s = delta / max;
-  const v = max;
 
-  if (rAbs === max) {
-    h = ((gAbs - bAbs) / delta) * 60;
-  } else if (gAbs === max) {
-    h = ((bAbs - rAbs) / delta + 2) * 60;
-  } else if (bAbs === max) {
-    h = ((rAbs - gAbs) / delta + 4) * 60;
-  }
+  const S = delta / max; 
+  let H = 0; 
 
-  if (h < 0) {
-    h += 360;
-  }
+  const delR = ((( max - R ) / 6 ) + (delta / 2) ) / delta
+  const delG = ((( max - G ) / 6 ) + (delta / 2) ) / delta
+  const delB = ((( max - B ) / 6 ) + (delta / 2) ) / delta
+
+  if      ( R == max ) H = delB - delG
+  else if ( G == max ) H = ( 1 / 3 ) + delR - delB
+  else if ( B == max ) H = ( 2 / 3 ) + delG - delR
+
+  if ( H < 0 ) H += 1
+  if ( H > 1 ) H -= 1
 
   return {
-    h,
-    s,
-    v,
+    h: H,
+    s: S,
+    v: V,
   };
 }

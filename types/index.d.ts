@@ -1,37 +1,37 @@
-
-export type ColorListType = [number, number, number];
-export type CMYKColorListType = [number, number, number, number];
-
+// r, g, b : 0 ~ 255 
 export interface RGB {
   r: number;
   g: number;
   b: number;
 }
 
+// h, s, v : 0.0 ~ 1.0 
 export interface HSV {
   h: number;
   s: number;
   v: number;
 }
 
+// h, s, l : 0.0 ~ 1.0
+export interface HSL {
+  h: number;
+  s: number;
+  l: number;
+}
+
+// c,m,y : 0.0 ~ 1.0
 export interface CMY {
   c: number;
   m: number;
   y: number;
 }
 
+// c,m,y,k : 0.0 ~ 1.0
 export interface CMYK {
   c: number;
   m: number;
   y: number;
   k: number;
-}
-
-
-export interface RGB {
-  r: number; 
-  g: number; 
-  b: number; 
 }
 
 /**
@@ -55,32 +55,4 @@ export interface Yxy {
   Y: number,
   x: number,
   y: number
-}
-
-
-
-export interface XYZFactory extends Function {
-  (color: XYZ): XYZ;
-
-  (x: number, y: number, z: number): XYZ;
-
-  (v: Array<number>): XYZ;
-
-  (v: Yxy): XYZ;
-
-  fromYxy: (src: Yxy) => XYZ
-  fromArray: (arr: number[], startIndex?: number) => XYZ
-  fromNumber: (x: number, y: number, z: number) => XYZ
-}
-
-export interface YxyFactory extends Function {
-  (color: Yxy): Yxy;
-
-  (Y: number, x: number, y: number): Yxy;
-
-  (v: Array<number>): Yxy;
-
-  fromXYZ: (src: XYZ) => Yxy
-  fromArray: (arr: number[], startIndex?: number) => Yxy
-  fromNumber: (Y: number, x: number, y: number) => Yxy
 }

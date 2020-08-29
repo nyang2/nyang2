@@ -1,18 +1,11 @@
-import { ColorListType, CMY, CMYK } from "../../types";
+import { CMY, CMYK } from "../../types";
 
-export function cmy2cmyk(...arg: ColorListType | [CMY]) : CMYK {
-  let c:number = 0;
-  let m:number = arg[1] || 0;
-  let y:number = arg[2] || 0;
-  let k:number = 1;
-  if (arg.length === 1) {
-    c = arg[0].c;
-    m = arg[0].m;
-    y = arg[0].y;
-  } else {
-    c = arg[0];
-  }
+export function cmy2cmyk(cmy: CMY) : CMYK {
+  let {c, m, y} = cmy; 
+
+  let k:number = 1;  
   k = Math.min(c, m, y, k);
+
   if (k === 1) {
     c = 0;
     m = 0;
