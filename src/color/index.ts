@@ -1,5 +1,5 @@
 import { rgb2hsv } from "./rgb2hsv"
-import { RGB, CMY, LAB, XYZ } from "../../types";
+import { RGB, CMY, LAB, XYZ, HSL, HSV } from "../../types";
 import { rgb2cmy } from "./rgb2cmy";
 import { cmy2rgb } from "./cmy2rgb";
 import { adobe2xyz } from "./adobe2xyz";
@@ -13,6 +13,9 @@ import { xyz2adobe } from "./xyz2adobe";
 import { xyz2lab } from "./xyz2lab";
 import { xyz2rgb } from "./xyz2rgb";
 import { name } from './name';
+import { hsl2rgb } from "./hsl2rgb";
+import { hsv2rgb } from "./hsv2rgb";
+import { rgb2hsl } from "./rgb2hsl";
 
 export {
     name,
@@ -129,6 +132,14 @@ export default class Color {
         }
     }
 
+    get hsl(): Color|undefined {
+        switch (this.data.type) {
+        case 'rgb':
+            const { h, s, l} = rgb2hsl(this.data as RGB);
+            return hsl(h, s, l, this.data.alpha);
+        }
+    }
+
     get cmy(): Color| undefined {
 
         switch(this.data.type) {
@@ -178,7 +189,13 @@ export default class Color {
             return rgb(value.r, value.g, value.b, this.data.alpha);        
         case 'xyz':
             value = xyz2rgb(this.data as XYZ);
-            return rgb(value.r, value.g, value.b, this.data.alpha);                                
+            return rgb(value.r, value.g, value.b, this.data.alpha);
+        case 'hsl':
+            value = hsl2rgb(this.data as HSL);
+            return rgb(value.r, value.g, value.b, this.data.alpha);            
+        case 'hsv':
+            value = hsv2rgb(this.data as HSV);
+            return rgb(value.r, value.g, value.b, this.data.alpha);
         }
     }
 

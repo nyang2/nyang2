@@ -1,16 +1,8 @@
-import { ColorListType, RGB, CMY } from "../../types";
+import { RGB, CMY } from "../../types";
 
-export function rgb2cmy(...arg: ColorListType | [RGB]) : CMY {
-  let r:number = 0;
-  let g:number = arg[1] || 0;
-  let b:number = arg[2] || 0;
-  if (arg.length === 1) {
-    r = arg[0].r;
-    g = arg[0].g;
-    b = arg[0].b;
-  } else {
-    r = arg[0];
-  }
+export function rgb2cmy(rgb: RGB) : CMY {
+  const { r, g, b} = rgb; 
+
   return {
     c: 1 - (Math.max(0, Math.min(255, Math.round(r))) / 255),
     m: 1 - (Math.max(0, Math.min(255, Math.round(g))) / 255),
